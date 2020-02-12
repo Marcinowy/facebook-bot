@@ -1,7 +1,6 @@
 <?php
 class Facebook extends WebPages {
-	public $cookies=[];
-	public $email="",$pass="";
+	public $cookies=[],$email,$pass;
 	public function __construct($email="",$pass="") {
 		$this->email=$email;
 		$this->pass=$pass;
@@ -99,7 +98,6 @@ class Facebook extends WebPages {
 	}
 	public function ChangeColor($cookies=array(),$other_id,$theme_id,$fb_dtsg) {
 		$cookies=(count($cookies)>0)?$cookies:$this->cookies;
-		//fb_dtsg
 		$my_id=$cookies["c_user"];
 		$queries=array("o0"=>array("doc_id"=>"1727493033983591","query_params"=>array("data"=>array("client_mutation_id"=>"0","actor_id"=>$my_id,"thread_id"=>$other_id,"theme_id"=>$theme_id,"source"=>"SETTINGS"))));
 		$payload="fb_dtsg=".$fb_dtsg."&queries=".urlencode(json_encode($queries));
